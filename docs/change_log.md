@@ -31,3 +31,12 @@ Kết quả synthesis/simulation Vivado vẫn **Needs verification** trong môi 
 - Cập nhật `docs/resource_report.md` để ghi rõ resource đã verified: LUT = 4706, FF = 1119, BRAM = 0, DSP = 0; `DSP = 0` verified ở cả post-synthesis và post-implementation utilization.
 - Cập nhật `docs/dsp_inference_plan.md` để nhấn mạnh `DSP = 0` là verified nhưng nguyên nhân chưa kết luận.
 - Không sửa RTL và không công bố power vì chưa đọc/ghi nhận giá trị từ `post_impl_power.rpt` thật trong task này.
+
+## Merge conflict resolution audit
+
+- Đã kiểm tra và không còn marker conflict kiểu Git trong tree làm việc.
+- Giữ nguyên kết quả Vivado KV260 đã verified: LUT = 4706, FF = 1119, BRAM = 0, DSP = 0, WNS = 4.021 ns, TNS = 0.000 ns, WHS = 0.030 ns, THS = 0.000 ns, setup failing endpoints = 0, hold failing endpoints = 0, timing status `All user specified timing constraints are met.`.
+- Giữ `docs/dsp_inference_plan.md` và ghi rõ `DSP = 0` đã verified nhưng nguyên nhân vẫn cần kiểm chứng bằng hierarchy/netlist/schematic/cell primitive.
+- Giữ `scripts/parse_vivado_reports.py` với khả năng parse LUT/FF/BRAM/DSP, WNS/TNS/WHS/THS, setup/hold failing endpoints và trạng thái timing constraints met.
+- Giữ `scripts/run_synth_kv260.bat` dùng Vivado Windows tại `D:\Vivado\2022.2\bin\vivado.bat`, có thông báo lỗi rõ ràng nếu thiếu Vivado và vẫn chạy `scripts\run_vivado_kv260.tcl`.
+- Không sửa RTL trong bước resolve conflict này.
