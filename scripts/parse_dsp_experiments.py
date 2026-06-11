@@ -90,6 +90,11 @@ def write_doc(summary: dict[str, Any], doc_path: Path) -> None:
     lines.append("")
     lines.append("Flow này synthesize riêng các top `PE`, `PE_array`, `MM`, `MM_ultra`, `GEMM_TOP` để điều tra vì sao baseline `GEMM_TOP` verified `DSP = 0` trên KV260/K26. RTL chính không bị sửa và flow này không dùng `(* use_dsp = \"yes\" *)`.")
     lines.append("")
+ codex/create-research-grade-automation-project-5wi553
+    lines.append("Kế hoạch chi tiết, giả thuyết cần kiểm chứng và quy tắc về `use_dsp` được ghi trong `docs/dsp_experiment_plan.md`.")
+    lines.append("")
+
+ main
     lines.append("## Cách chạy")
     lines.append("")
     lines.append("Linux/Vivado trong PATH:")

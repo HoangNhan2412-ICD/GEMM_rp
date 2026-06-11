@@ -62,7 +62,11 @@ Mỗi top xuất report vào `reports/dsp_experiments/<top_name>/`, gồm utiliz
 python3 scripts/parse_dsp_experiments.py --write-doc
 ```
 
+codex/create-research-grade-automation-project-5wi553
+Kế hoạch chi tiết được ghi tại `docs/dsp_experiment_plan.md`. Báo cáo so sánh được ghi tại `docs/dsp_experiment_report.md`. Hiện tại nếu chưa chạy Vivado experiment thì các metric trong bảng experiment là **Needs verification**.
+
 Báo cáo so sánh được ghi tại `docs/dsp_experiment_report.md`. Hiện tại nếu chưa chạy Vivado experiment thì các metric trong bảng experiment là **Needs verification**.
+ main
 
 ## Checklist kiểm chứng đề xuất
 
