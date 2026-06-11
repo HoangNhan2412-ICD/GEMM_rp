@@ -1,0 +1,14 @@
+build/
+*.vcd
+*.vvp
+*.log
+*.jou
+*.str
+*.dcp
+.cache/
+reports/kv260/*.rpt
+reports/kv260/*.json
+reports/kv260/*.dcp
+
+__pycache__/
+*.py[cod]
