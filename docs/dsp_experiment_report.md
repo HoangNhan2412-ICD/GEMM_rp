@@ -4,10 +4,8 @@
 
 Flow này synthesize riêng các top `PE`, `PE_array`, `MM`, `MM_ultra`, `GEMM_TOP` để điều tra vì sao baseline `GEMM_TOP` verified `DSP = 0` trên KV260/K26. RTL chính không bị sửa và flow này không dùng `(* use_dsp = "yes" *)`.
 
- codex/create-research-grade-automation-project-5wi553
 Kế hoạch chi tiết, giả thuyết cần kiểm chứng và quy tắc về `use_dsp` được ghi trong `docs/dsp_experiment_plan.md`.
 
-main
 ## Cách chạy
 
 Linux/Vivado trong PATH:
@@ -32,11 +30,11 @@ python3 scripts/parse_dsp_experiments.py --write-doc
 
 | Top | LUT | FF | BRAM | DSP | WNS | TNS | DSP primitive cells | Mult/product named cells | Trọng tâm kiểm tra |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| `PE` | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Kiểm tra MAC registered INT8 đơn lẻ (`feature_i * weight_i` cộng accumulator). |
-| `PE_array` | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Kiểm tra dot-product combinational có nhiều multiplier INT8 trong compute core baseline. |
-| `MM` | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Kiểm tra wrapper registered quanh `PE_array`; xác định multiplier có còn trong cone `MM` không. |
-| `MM_ultra` | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Kiểm tra pipeline input/buffer/MM/output; xác định compute path có bị optimize qua stream control không. |
-| `GEMM_TOP` | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | Needs verification | So sánh với baseline top wrapper đã verified DSP = 0. |
+| `PE` | `96` | `33` | `0` | `0` | Needs verification | Needs verification | `0` | `0` | Kiểm tra MAC registered INT8 đơn lẻ (`feature_i * weight_i` cộng accumulator). |
+| `PE_array` | `4640` | `0` | `0` | `0` | Needs verification | Needs verification | `0` | `0` | Kiểm tra dot-product combinational có nhiều multiplier INT8 trong compute core baseline. |
+| `MM` | `4641` | `289` | `0` | `0` | Needs verification | Needs verification | `0` | `0` | Kiểm tra wrapper registered quanh `PE_array`; xác định multiplier có còn trong cone `MM` không. |
+| `MM_ultra` | `4877` | `1119` | `0` | `0` | Needs verification | Needs verification | `0` | `0` | Kiểm tra pipeline input/buffer/MM/output; xác định compute path có bị optimize qua stream control không. |
+| `GEMM_TOP` | `4877` | `1119` | `0` | `0` | Needs verification | Needs verification | `0` | `0` | So sánh với baseline top wrapper đã verified DSP = 0. |
 
 ## Baseline verified để đối chiếu
 
@@ -51,4 +49,4 @@ Baseline `GEMM_TOP` implementation đã verified trước đó trên KV260/K26: 
 
 ## Trạng thái
 
-Chưa có report Vivado thật trong `reports/dsp_experiments/` tại thời điểm tạo tài liệu này. Cần chạy flow trên máy có Vivado. **Needs verification**.
+Đã parse các report hiện có trong `reports/dsp_experiments/`. Các ô còn `Needs verification` là metric chưa tìm thấy trong report thật.

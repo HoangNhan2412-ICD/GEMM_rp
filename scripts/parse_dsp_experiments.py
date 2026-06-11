@@ -25,7 +25,7 @@ METRICS = ["LUT", "FF", "BRAM", "DSP", "WNS", "TNS"]
 
 
 def read_text(path: Path) -> str:
-    return path.read_text(errors="ignore") if path.exists() else ""
+    return path.read_text(encoding="utf-8", errors="ignore") if path.exists() else ""
 
 
 def parse_dsp_probe(path: Path) -> dict[str, int]:
@@ -155,7 +155,7 @@ def write_doc(summary: dict[str, Any], doc_path: Path) -> None:
         lines.append("Đã parse các report hiện có trong `reports/dsp_experiments/`. Các ô còn `Needs verification` là metric chưa tìm thấy trong report thật.")
     else:
         lines.append("Chưa có report Vivado thật trong `reports/dsp_experiments/` tại thời điểm tạo tài liệu này. Cần chạy flow trên máy có Vivado. **Needs verification**.")
-    doc_path.write_text("\n".join(lines) + "\n")
+    doc_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -168,7 +168,7 @@ def main() -> int:
     summary = aggregate(args.report_root)
     args.report_root.mkdir(parents=True, exist_ok=True)
     out = args.report_root / "summary.json"
-    out.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
+    out.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 
     if args.write_doc:
