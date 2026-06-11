@@ -1,5 +1,6 @@
 @echo off
 setlocal
+ codex/create-research-grade-automation-project-5wi553
 set "VIVADO_BIN=D:\Vivado\2022.2\bin"
 set "VIVADO_BAT=%VIVADO_BIN%\vivado.bat"
 
@@ -16,3 +17,19 @@ if errorlevel 1 exit /b %errorlevel%
 
 python scripts\parse_vivado_reports.py reports\kv260
 exit /b %errorlevel%
+
+
+set "VIVADO_BIN=D:\Vivado\2022.2\bin"
+set "VIVADO=%VIVADO_BIN%\vivado.bat"
+
+if not exist "%VIVADO%" (
+    echo ERROR: Cannot find Vivado at "%VIVADO%"
+    echo Please check your Vivado path.
+    exit /b 1
+)
+
+echo Using Vivado: %VIVADO%
+"%VIVADO%" -mode batch -source "%CD%\scripts\run_vivado_kv260.tcl"
+
+endlocal
+ main

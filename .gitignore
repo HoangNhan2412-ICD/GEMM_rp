@@ -12,7 +12,10 @@ reports/kv260/*.dcp
 
 __pycache__/
 *.py[cod]
+ codex/create-research-grade-automation-project-5wi553
 reports/dsp_experiments/**/*.rpt
 reports/dsp_experiments/**/*.json
 reports/dsp_experiments/**/*.dcp
 reports/dsp_experiments/summary.json
+=======
+main

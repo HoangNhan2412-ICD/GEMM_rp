@@ -4,8 +4,10 @@
 
 Flow này synthesize riêng các top `PE`, `PE_array`, `MM`, `MM_ultra`, `GEMM_TOP` để điều tra vì sao baseline `GEMM_TOP` verified `DSP = 0` trên KV260/K26. RTL chính không bị sửa và flow này không dùng `(* use_dsp = "yes" *)`.
 
+ codex/create-research-grade-automation-project-5wi553
 Kế hoạch chi tiết, giả thuyết cần kiểm chứng và quy tắc về `use_dsp` được ghi trong `docs/dsp_experiment_plan.md`.
 
+main
 ## Cách chạy
 
 Linux/Vivado trong PATH:
